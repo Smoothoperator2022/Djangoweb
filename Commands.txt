@@ -1,0 +1,12 @@
+# Virtual environment launch
+cd C:\Djangoweb\venv\Scripts
+activate
+
+#Run server
+cd C:\Djangoweb\exploreDj_root
+python manage.py runserver
+
+#
+cd keys
+ssh-keys
+test_git
