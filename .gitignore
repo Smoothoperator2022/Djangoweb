@@ -1,0 +1,14 @@
+env/
+.venv/
+venv/
+
+.idea/
+.vscode/
+
+__pycache__/
+*.pyc
+
+db.sqlite3
+.env
+
+get-pip.py

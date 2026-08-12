@@ -1,0 +1,43 @@
+{% extends 'portfolio/base.html' %}
+
+<!--we just transfer main elements from 'base.html'-->
+{% block content %}
+
+<!--<h1>Some info about stacks I used in portfolio's works</h1>-->
+
+<h1 id="articletitle" class="font-weight-bold text-center">Articles about technical stacks and other solutions</h1>
+
+<h3 class="text-center mb-5">Stas has written {{ articles.count }} article{{ articles.count|pluralize }}</h3>
+<!-- we display the set by "count|pluralize "-->
+
+
+{% for article in articles %}
+<div class="row justify-content-center my-3">
+  <div class="col-md-10">
+    <a href="{% url 'blog:detail' article.id %}">
+      <h2>{{ forloop.counter }}. {{ article.title }}</h2></a>
+      <!--    <h5 class="text-muted">{{ blog.date|date:'M d Y'|upper }}</h5>-->
+    <h4>{{ article.description|safe|truncatechars:250 }}</h4>
+  </div>
+</div>
+{% endfor %}
+
+<!--{% for article in articles %}-->
+
+<!--&lt;!&ndash; such construction make a title callable to name 'detail'&ndash;&gt;-->
+<!--<a href="{% url 'blog:detail' article.id %}"><h2>{{ forloop.counter }}. {{ article.title }}</h2></a>-->
+
+<!--<p>{{ article.description|safe|truncatechars:250 }}</p>-->
+<!--&lt;!&ndash; {{ article.date|date:"M d Y"|upper }} / "truncatechars:250" - set the limit of shown /\-->
+<!-- "safe" or "striptags" make tags working in admin panel and browser&ndash;&gt;-->
+
+<!--<img src="{{ article.image.url }}">-->
+
+<!--{% if article.url %}-->
+<!--<a href="{{ article.url }}">Link</a>-->
+<!--{% endif %}-->
+
+<!--{% endfor %}-->
+
+{% endblock %}
+

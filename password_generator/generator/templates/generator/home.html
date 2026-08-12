@@ -1,0 +1,41 @@
+<!--add bootsstrap online framework for nice look-->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<div class="container text-center">
+
+
+
+<h1>Password generator</h1>
+
+<form action="{% url 'password' %}"> <!--for transaction of parameters use block 'form';
+ 'action' means route to page 'password'-->
+    <select name="length"> <!--tag for falling out list 'length'-->
+    <option vallue="6"> 6 char long </option>
+    <option vallue="7"> 7 </option>
+    <option vallue="8"> 8 </option>
+    <option vallue="9"> 9 </option>
+    <option vallue="10"> 10 </option>
+    <option vallue="11"> 11 </option>
+    <option vallue="12" selected="selected"> 12 </option> <!--selected is option from begining-->
+
+    </select> Length
+    <br>
+    <br>
+    <input type="checkbox" name="uppercase"> Uppercase <!-- create tag for option-->
+    <br>
+    <br>
+    <input type="checkbox" name="numbers"> Numbers
+    <br>
+    <br>
+    <input type="checkbox" name="special"> Special Characters
+    <br>
+    <br>
+    <input type="submit" value="Generate password" class="btn btn-primary"> <!--for text and forms-->
+
+</form>
+
+<br>
+
+<a href="{% url 'about' %}" >About</a> link button to 'about'page
+
+</div>

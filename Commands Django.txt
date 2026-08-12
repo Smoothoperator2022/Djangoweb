@@ -1,0 +1,126 @@
+Долучитись до ІТ-індустрії, 
+покращувати свої навички програмування та розвиватись
+як спеціаліст у цифровому сегменті.
+Sharpen my programming skills and developing as a specialist in the IT-segment.
+
+django-admin # all functions
+
+django-admin startproject password_generator# create a new project "password_generator"
+
+python manage.py startapp generator #Add an App 'generator' to a Project
+
+python manage.py runserver # Starting the server
+
+python manage.py makemigrations #Creating Migrations
+python manage.py migrate #Migrate the Database
+python manage.py createsuperuser #Creating a Super User for the Admin Panel
+python manage.py changepassword Stas#Change Any user`s Password
+python manage.py collectstatic #Collecting Static Files Into One Folder
+django123
+python manage.py help #list of commands
+
+"# created by virtualenv automatically" in .gitignore
+*"
+
+https://github.com/zappycode/django3-personal-portfolio
+https://t.me/OMET_tour_bot
+
+base.html
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Stas Mostovskykh</title>
+  </head>
+  <body>
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled">Disabled</a>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+{% block content %}{% endblock %}
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+
+homepage.html
+{% extends 'portfolio/base.html' %}
+
+<!--we just transfer main elements from 'base.html'-->
+{% block content %}
+<!--the 'block content' name must be same as in 'base'-->
+    <h1>My portfolio</h1>
+<!--'{' with '%' set the code dependence| '{{' if work with dictionary -->
+
+{% load static %}
+
+<!--this sentence make link for blog|articles page -->
+<a href="{% url 'blog:all_articles' %}"> Blog </a>
+<br>
+
+<a href="{% static 'portfolio/CV Mostovskykh Stanislav IT.pdf' %}"> Resume </a> <!--for connection file to our site -->
+<br>
+
+<img src="{% static 'portfolio/mine yacht.jpeg' %}">
+
+{% for project in projects %}
+
+<h2>{{ project.title }}</h2> <!--add 'title' atrribute -->
+<p>{{ project.description }}</p>
+
+<img src="{{ project.image.url}}" > <!--height=40 width=40 -->
+
+{% if project.url %} <!--if url exists share link -->
+<a href="{{ project.url }}">Link</a>
+{% endif %}
+
+{% endfor %}
+
+{% endblock %}

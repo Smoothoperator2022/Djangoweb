@@ -1,0 +1,15 @@
+{% extends 'portfolio/base.html' %}
+
+{% load static %}
+<!--we just transfer main elements from 'base.html'-->
+{% block content %}
+
+<h1 class="text-center mt-5" id="blogdetailtitle">{{ article.title }}</h1>
+
+
+<h2></h2>
+<!-- {{ article.date|date:"F jS Y" }} <h5 class="text-center text-muted mb-5">{{ article.date|date:'F jS Y' }}</h5>-->
+
+{{ article.description|safe }}
+
+{% endblock %}
